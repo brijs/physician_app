@@ -1,0 +1,14 @@
+<% provide(:title, 'Home') %>
+
+<% provide :fullwidthrow do %>
+	<div class="hero-unit center">
+		<h1>Welcome to Brij's patient management dashboard</h1>
+
+		<h2>
+			This is the home page for <%= link_to "the online patient management tool", static_pages_home_path %>
+		</h2>
+
+		<%= link_to "Sign up now!", signup_path, 
+		class: "btn btn-large btn-primary" %>
+	</div>
+<% end %>

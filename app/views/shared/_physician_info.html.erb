@@ -1,0 +1,36 @@
+<% @physician ||= current_physician %>
+<a href="<%= physician_path(@physician) %>">
+	<%= gravatar_for @physician, size: 60 %>
+</a>
+
+<br>
+<br>
+<h1>
+	Dr. <%= display_name_for (@physician) %>
+	<i class = "icon-star"></i>
+</h1>
+
+<span>
+	<%= link_to pluralize(@physician.patients.count, "patient"), patients_path %>
+</span>
+<span class="timestamp">
+	last updated <%= time_ago_in_words(@physician.updated_at) %> ago.
+</span>
+
+<br>
+<span class="content"><strong>Date of Birth:</strong>
+	<address> <%= @physician.dob.to_s(:long) %></address>
+</span>
+
+<span class="content"><strong>Phone:</strong>  
+	<address><%= @physician.mobile %></address>
+</span>
+<span class="content"><strong>Email:</strong>  
+	<address><%= @physician.email %></address>
+</span>
+
+<span>
+	<%= link_to edit_physician_path(@physician), :class => "btn btn-mini btn-info"  do %>
+	<i class="icon-edit"></i> Edit my Profile
+	<% end %>
+</span>

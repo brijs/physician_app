@@ -1,0 +1,46 @@
+<% provide(:title, current_physician.first_name + "'s patients") %>
+<% provide :sidebar do %>
+    <section>
+        <%= render 'shared/physician_info'%>
+    </section>
+<% end %>
+
+
+
+<% if current_physician.patients.any? %>
+    <h2 >My Patients (<%= current_physician.patients.count %>)</h3>
+    <br>
+    <div>
+    <form class="form-horizontal" action=<%= patients_path %>>
+      <input type="text" class="search-query span2" placeholder="Filter by name" id="search" name = "search">
+    </form> 
+   </div>
+    <%= will_paginate @patients %>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Mobile</th>
+            <th>Sex</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <%= render @patients %>
+    </tbody>
+</table>
+
+<% end %>
+
+ <%= link_to new_patient_path, :class => 'btn btn-primary' do %>
+<i class = "icon-plus icon-white"></i> New Patient
+<% end %>
+
+

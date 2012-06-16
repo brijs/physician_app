@@ -1,0 +1,19 @@
+<% provide(:title, current_physician.first_name + "'s patients") %>
+
+<%= provide :sidebar do %>
+    <section>
+      <%= render 'shared/patient_info' %>
+    </section>
+<% end %>
+
+
+
+<div>
+  <%= render 'visits/index' %> 
+</div>
+<%= link_to new_patient_visit_path(@patient), :class => 'btn btn-primary' do %>
+  <i class = "icon-plus icon-white"></i> New Visit
+<% end %>
+
+
+

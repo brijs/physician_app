@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  reference_number: MyString
+  date_of_visit: 2012-06-13
+  complaints: MyText
+  findings: MyText
+  treatment: MyText
+  notes: MyText
+
+two:
+  reference_number: MyString
+  date_of_visit: 2012-06-13
+  complaints: MyText
+  findings: MyText
+  treatment: MyText
+  notes: MyText

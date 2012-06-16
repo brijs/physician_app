@@ -1,0 +1,44 @@
+<h1>Listing physicians</h1>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Dob</th>
+        <th>Mobile</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+<% @physicians.each do |physician| %>
+  <tr>
+    <td><%= physician.first_name %></td>
+    <td><%= physician.last_name %></td>
+    <td><%= physician.email %></td>
+    <td><%= physician.dob %></td>
+    <td><%= physician.mobile %></td>
+    
+    <td><%= link_to 'Show', physician, :class => 'btn btn-mini btn-info' %></td>
+    <td><%= link_to edit_physician_path(physician),
+        :class => 'btn btn-mini' do%>
+            <i class="icon-edit"></i> 
+    <% end %>
+    </td>
+    <td><%= link_to physician, confirm: 'Are you sure?', 
+    method: :delete, :class => 'btn btn-mini btn-danger' do %>
+        <i class="icon-trash icon-white"></i> 
+    <% end %>
+
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Physician', new_physician_path %>

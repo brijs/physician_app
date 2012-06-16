@@ -1,0 +1,30 @@
+<% if visit.id %>
+  <tr>
+    <td>
+        <a href="<%= patient_path(visit.patient) %>">
+        <%= gravatar_for visit.patient, size:15 %>
+        <%= display_name_for visit.patient %>
+        </a>
+    </td>
+    <td><%= visit.reference_number %></td>
+    <td><%= visit.date_of_visit %></td>
+    <td><%= visit.complaints %></td>
+    <td><%= visit.findings %></td>
+    <td><%= visit.treatment %></td>
+    <td><%= visit.notes %></td>
+    <% if false %>
+    <td><%= link_to 'Show', patient_visit_path(visit.patient, visit), 
+      :class => 'btn btn-mini btn-info' %>
+    </td>
+    <% end %>
+    <td><%= link_to edit_patient_visit_path(visit.patient, visit),
+        :class => 'btn btn-mini', :html => {:alt => 'Edit'} do%>
+            <i class="icon-edit"></i> 
+    <% end %>
+    </td>
+    <td><%= link_to visit, confirm: 'Are you sure?', method: :delete, :class => 'btn btn-mini btn-danger' do %>
+        <i class="icon-trash icon-white"></i> 
+    <% end %>
+  </td>
+  </tr>
+<% end %>

@@ -1,0 +1,16 @@
+<% provide(:title, current_physician.first_name + "'s patients") %>
+
+<%= provide :sidebar do %>
+    <section>
+        <h1>   
+            Filter Visits
+        </h1>
+        <br>
+        <%= render 'visit_searches/form' %>
+    </section>
+<% end %>
+
+
+<%= render 'visits/index' %>
+
+

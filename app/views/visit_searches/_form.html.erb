@@ -1,0 +1,17 @@
+<% @visit_search ||= VisitSearch.new %>
+<%= simple_form_for(@visit_search) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs from-horizontal">
+    <%= f.input :reference_number, :placeholder => "Enter exact reference number" %>
+    <%= f.input :from_date, :input_html => {:class => "span1"}, 
+      :include_blank => true %>
+    <%= f.input :to_date,  :input_html => {:class => "span1"},
+      :include_blank => true %>
+    <%= f.input :keywords, :placeholder => "search complaints, findings etc"%>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button  :submit, :value => 'Search' %>
+  </div>
+<% end %>

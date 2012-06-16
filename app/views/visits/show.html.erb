@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reference number:</b>
+  <%= @visit.reference_number %>
+</p>
+
+<p>
+  <b>Date of visit:</b>
+  <%= @visit.date_of_visit %>
+</p>
+
+<p>
+  <b>Complaints:</b>
+  <%= @visit.complaints %>
+</p>
+
+<p>
+  <b>Findings:</b>
+  <%= @visit.findings %>
+</p>
+
+<p>
+  <b>Treatment:</b>
+  <%= @visit.treatment %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @visit.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_visit_path(@visit) %> |
+<%= link_to 'Back', visits_path %>

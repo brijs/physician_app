@@ -1,0 +1,40 @@
+<a href="<%= patient_path(@patient) %>">
+	<%= gravatar_for @patient, size: 60 %>
+</a>
+
+<br>
+<br>
+<h1><%= display_name_for @patient %></h1>
+<span class="timestamp">
+	last updated <%= time_ago_in_words(@patient.updated_at) %> ago.
+</span>
+
+<br>
+<span>
+	<%= link_to  "#" do %>
+		<%= pluralize(@patient.visits.count, "visit") %>
+	<% end %>
+</span>
+<span class="timestamp">
+	<% if @patient.visits.count > 0 %>
+		last visited <%= time_ago_in_words(@patient.visits.maximum(:date_of_visit)) %> ago.
+	<% end %>
+</span>
+
+<br>
+<span class="content"><strong>Date of Birth:</strong>
+	<address> <%= @patient.dob.to_s(:long) %></address>
+</span>
+<br>
+<span class="content"><strong>Phone:</strong>  
+	<address><%= @patient.mobile %></address>
+</span>
+<span class="content"><strong>Email:</strong>  
+	<address><%= @patient.email %></address>
+</span>
+
+<span>
+	<%= link_to edit_patient_url(@patient), :class => "btn btn-mini btn-info"  do %>
+	<i class="icon-edit"></i> Edit Patient's Info
+	<% end %>
+</span>

@@ -1,0 +1,24 @@
+<%= simple_form_for @patient, :html => { :class => 'form-horizontal' } do |f| %>
+    <fieldset>
+    <legend><%= controller.action_name.capitalize %> Patient</legend>
+
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :email %>
+    <%= f.input :dob, :input_html => {:class => "span1"},
+            :label => "date of birth",
+            :as => :date, :start_year => Date.today.year - 90,
+                      :end_year => Date.today.year - 12%>
+    <%= f.input :mobile, :label => "Phone", :as => :tel%>
+    <%= f.input :sex, :collection => [["Male", "Male"], ["Female", "Female"]],
+        :as => :select, :selected => "Male" %>
+
+    <div class="form-actions">
+      <!-- <i class="icon-plus-sign"></i> -->
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', patients_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+
+<% end %>
+

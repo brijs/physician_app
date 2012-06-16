@@ -1,0 +1,25 @@
+<% provide :sidebar do %>
+    <section>
+        <%= render 'shared/patient_info'%>
+    </section>
+<% end %>
+
+
+<%= simple_form_for [@patient, @visit], :html => {:class => "form-vertical"} do |f| %>
+    <fieldset>
+      <legend>
+        <%= display_name_for(@patient) + "'s Visit" %>
+      </legend>
+    <%= f.input :reference_number%>
+    <%= f.input :date_of_visit, :input_html => {:class => "span1"}%>
+    <%= f.input :complaints, :as => :text, :input_html => { :rows => 5} %>
+    <%= f.input :findings, :as => :text, :input_html => {:rows => 4} %>
+    <%= f.input :treatment, :as => :text, :input_html => { :rows => 3}  %>
+    <%= f.input :notes , :as => :text, :input_html => { :rows => 3} %>
+  </fieldset>
+    <div class="form-actions">
+      <!-- <i class="icon-plus-sign"></i> -->
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+    </div>
+  
+<% end %>

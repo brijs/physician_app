@@ -1,0 +1,22 @@
+<h2>Recent visits</h2>
+<% if !@patient || @patient.visits.any? %>
+<%= will_paginate @visits %>
+<table class = "table table-striped">
+<thead>
+  <tr>
+    <th>Patient name</th>
+    <th>Reference number</th>
+    <th>Date of visit</th>
+    <th>Complaints</th>
+    <th>Findings</th>
+    <th>Treatment</th>
+    <th>Notes</th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+<%= render @visits %>
+</tbody>
+</table>
+<% end %>
