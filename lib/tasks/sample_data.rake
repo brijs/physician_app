@@ -76,8 +76,7 @@ def rand_int(from, to)
 end
 
 def rand_date(from, to)
-  "12/11/2011"
-  # Time.at(rand_in_range(from.to_f, to.to_f)).to_date
+  Time.at(rand_in_range(from.to_f, to.to_f)).to_date
 end
 
 def rand_in_range(from, to)
