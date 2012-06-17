@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120616195313) do
+ActiveRecord::Schema.define(:version => 20120617114238) do
 
   create_table "patients", :force => true do |t|
     t.string   "first_name"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(:version => 20120616195313) do
     t.date     "dob"
     t.string   "mobile"
     t.string   "sex"
-    t.string   "physician_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "physician_id", :limit => 255
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   add_index "patients", ["first_name"], :name => "index_patients_on_first_name"
