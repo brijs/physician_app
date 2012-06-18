@@ -1,5 +1,5 @@
 class Visit < ActiveRecord::Base
-  attr_accessible :complaints, :date_of_visit, :findings, :notes, :reference_number, :treatment
+  attr_accessible :complaints, :date_of_visit, :findings, :diagnosis, :notes, :reference_number, :treatment
 
   belongs_to :patient
 

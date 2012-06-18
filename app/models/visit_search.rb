@@ -13,8 +13,10 @@ class VisitSearch < ActiveRecord::Base
 
 	def keyword_conditions
 		["(visits.complaints LIKE ? OR visits.findings LIKE ?
-		 OR visits.treatment LIKE ? OR visits.notes LIKE ?)", 
-		 "%#{keywords}%","%#{keywords}%","%#{keywords}%","%#{keywords}%"] unless keywords.blank?
+		 OR visits.treatment LIKE ? OR visits.notes LIKE ? 
+		 OR visits.diagnosis LIKE ?)", 
+		 "%#{keywords}%","%#{keywords}%","%#{keywords}%","%#{keywords}%",
+		 "%#{keywords}%"] unless keywords.blank?
 	end
 
 	def from_date_conditions

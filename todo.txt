@@ -1,0 +1,9 @@
+-search paging bug
+-case search bug
+-routes.rb cleanup
+-update pwd relogin bug
+-remove back/edit links
+-sort by desc date
+-last visited date on patient profile
+-num patients/visits in last 30 days on phy profile
+-indian style date of visit display
