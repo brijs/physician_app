@@ -13,7 +13,7 @@
 <span>
 	<%= link_to pluralize(@physician.patients.count, "patient"), patients_path %>
 </span>
-<span class="timestamp">
+<span class="timestamp content">
 	last updated <%= time_ago_in_words(@physician.updated_at) %> ago.
 </span>
 

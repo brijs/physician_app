@@ -16,8 +16,11 @@ class PatientsController < ApplicationController
   def search_ref
       # local array
       patients = Patient.where('physician_id = ? AND reference_number = ?', 
-          current_physician, params[:reference_number]).limit(1)
-      if (patients.empty?)
+          current_physician, params[:reference_number]).limit(1) unless params[:reference_number].blank?
+
+      if (params[:reference_number].blank?)
+        redirect_to patients_url
+      elsif (patients.empty?)
         redirect_to patients_url, 
             alert: 'Reference ID ' + params[:reference_number] + ' not found'
       else

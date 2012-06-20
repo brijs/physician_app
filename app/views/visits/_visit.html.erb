@@ -2,8 +2,7 @@
   <tr>
     <td>
         <a href="<%= patient_path(visit.patient) %>">
-        <%= gravatar_for visit.patient, size:15 %>
-        <%= display_name_for visit.patient %>
+            <%= display_name_with_ref_for visit.patient %>
         </a>
     </td>
     <td><%= time_ago_in_words(visit.date_of_visit) %> ago</td>

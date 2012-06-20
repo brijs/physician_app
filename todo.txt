@@ -2,6 +2,9 @@ done:
 -case search bug
 -email is optional
 -reference number for patient; unique; editable
+-quick-add
+-sort by desc date
+-search paging bug
 
 
 low:
@@ -10,7 +13,6 @@ low:
 -remove back/edit links
 
 todo:
--search paging bug
 -last visited date on patient profile
 -num patients/visits in last 30 days on phy profile
 -indian style date of visit display
@@ -19,6 +21,9 @@ todo:
 -quick search last-visit, and update
 
 p1:
--quick-add
--sort by desc date
 -autosave autocomplete diagnosis/treatment
+-pdf: 
+  - degrees (next to name)
+  - designations(left/right)
+  - clinic, hospital (title + address/timings)
+  - (footer): title, text

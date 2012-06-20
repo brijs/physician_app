@@ -1,13 +1,13 @@
 <a href="<%= patient_path(@patient) %>">
-	<%= gravatar_for @patient, size: 60 %>
+	<span class="span2 badge-big center badge badge"><%= @patient.reference_number %></span>
 </a>
 
-<br>
-<br>
-<h1><%= display_name_for @patient%> </h1>
-<h4>Ref No. <strong><%= @patient.reference_number %></strong></h4>
 
-<span class="timestamp">
+<br>
+<br>
+<h1 ><%= display_name_for @patient%> </h1>
+
+<span class="timestamp content">
 	last updated <%= time_ago_in_words(@patient.updated_at) %> ago.
 </span>
 
@@ -21,7 +21,7 @@
 	<% end %>
 	
 </span>
-<span class="timestamp">
+<span class="timestamp content">
 	<% if @patient.visits.count > 0 %>
 		last visited <%= time_ago_in_words(@patient.visits.maximum(:date_of_visit)) %> ago.
 	<% end %>

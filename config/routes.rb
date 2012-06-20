@@ -1,6 +1,6 @@
 PhysicianApp::Application.routes.draw do
 
-  resources :visit_searches
+  resources :visit_searches, only: [:index, :create]
 
   resources :visits
 

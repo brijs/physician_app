@@ -9,6 +9,13 @@ module PatientsHelper
     	class: "gravatar")
   end
 
+  def display_name_with_ref_for(user)
+    content_tag(:span, user.reference_number,
+       :class => "badge badge-inverse") + " " + display_name_for(user)
+  
+  end
+
+
   def display_name_for(user)
   	user.first_name + ' ' + user.last_name
   end

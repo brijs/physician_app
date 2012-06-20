@@ -2,11 +2,14 @@ class VisitSearchesController < ApplicationController
   # GET /visit_searches
   # GET /visit_searches.json
   def index
-    @visit_searches = VisitSearch.all
+    physician = current_physician
+    @visit_search = session[:visit_search]
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @visit_searches }
+    if (@visit_search.nil?)
+      redirect_to visits_path
+    else
+      @visits = @visit_search.visits(physician, params[:page]);
+      render 'visits/index'
     end
   end
 
@@ -43,6 +46,7 @@ class VisitSearchesController < ApplicationController
     physician = current_physician
     @visit_search = VisitSearch.new(params[:visit_search])
     @visits = @visit_search.visits(physician, params[:page]);
+    session[:visit_search] = @visit_search
     render 'visits/index'
   end
 
