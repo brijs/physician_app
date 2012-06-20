@@ -7,7 +7,7 @@ class Visit < ActiveRecord::Base
   validates :complaints, presence: true
   validates :date_of_visit, presence: true
 
-  default_scope order: 'visits.created_at DESC'
+  default_scope order: 'visits.date_of_visit DESC'
 
   scope :for_physician,  
   	lambda { |physician| where("physicians.id = ?", physician)

@@ -20,6 +20,9 @@
               <% end %></li>
           <% end %>
           <% if signed_in? %>
+          <form class="navbar-search pull-left" action= <%= search_ref_patients_path %> method = "get">
+          <input type="text" class="search-query span2" placeholder="Enter Patient Ref No" id="reference_number" name = "reference_number">
+          </form> 
           <li><%= link_to patients_path do %>
             <i class="icon-list icon-white"></i> My Patients
             <% end %></li>

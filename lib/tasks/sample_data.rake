@@ -30,6 +30,7 @@ def make_physicians_and_patients
     admin.patients.create!(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
+      reference_number: n,
       email: "example-#{n+1}@railstutorial.org",
       dob: rand_date(Time.now - seconds_year*70, Time.now - seconds_year*10),
       mobile: Faker::PhoneNumber.phone_number,
@@ -41,6 +42,7 @@ def make_physicians_and_patients
     physician.patients.create!(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
+      reference_number: n,
       email: "example-#{n+1+email_offset}@railstutorial.org",
       dob: rand_date(Time.now - seconds_year*70, Time.now - seconds_year*10),
       mobile: Faker::PhoneNumber.phone_number,
@@ -53,14 +55,12 @@ end
 def make_visits
   patients = Patient.all(limit: 50)
   25.times do
-    reference_no = 1 + Random.rand(500000)
     complaints = Faker::Lorem.sentences(3)
     findings = Faker::Lorem.sentence(5)
     treatment = Faker::Lorem.sentences(2)
     
     seconds_day = 24 * 60 * 60
     patients.each { |patient| patient.visits.create!(
-          reference_number: reference_no,
           date_of_visit: rand_date(Time.now - seconds_day*50, Time.now),
           complaints: complaints,
           findings: findings, 

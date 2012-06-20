@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618114227) do
+ActiveRecord::Schema.define(:version => 20120619120002) do
 
   create_table "patients", :force => true do |t|
     t.string   "first_name"
@@ -20,13 +20,16 @@ ActiveRecord::Schema.define(:version => 20120618114227) do
     t.date     "dob"
     t.string   "mobile"
     t.string   "sex"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "physician_id"
+    t.string   "reference_number"
   end
 
   add_index "patients", ["first_name"], :name => "index_patients_on_first_name"
   add_index "patients", ["last_name"], :name => "index_patients_on_last_name"
+  add_index "patients", ["physician_id", "reference_number"], :name => "index_patients_on_physician_id_and_reference_number"
+  add_index "patients", ["reference_number"], :name => "index_patients_on_reference_number"
 
   create_table "physicians", :force => true do |t|
     t.string   "first_name"
@@ -54,14 +57,13 @@ ActiveRecord::Schema.define(:version => 20120618114227) do
   end
 
   create_table "visits", :force => true do |t|
-    t.string   "reference_number"
     t.date     "date_of_visit"
     t.text     "complaints"
     t.text     "findings"
     t.text     "treatment"
     t.text     "notes"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "patient_id"
     t.string   "diagnosis"
   end
@@ -70,7 +72,6 @@ ActiveRecord::Schema.define(:version => 20120618114227) do
   add_index "visits", ["date_of_visit"], :name => "index_visits_on_date_of_visit"
   add_index "visits", ["findings"], :name => "index_visits_on_findings"
   add_index "visits", ["notes"], :name => "index_visits_on_notes"
-  add_index "visits", ["reference_number"], :name => "index_visits_on_reference_number"
   add_index "visits", ["treatment"], :name => "index_visits_on_treatment"
 
 end

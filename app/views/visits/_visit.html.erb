@@ -6,8 +6,7 @@
         <%= display_name_for visit.patient %>
         </a>
     </td>
-    <td><%= visit.reference_number %></td>
-    <td><%= visit.date_of_visit %></td>
+    <td><%= time_ago_in_words(visit.date_of_visit) %> ago</td>
     <td><%= visit.complaints %></td>
     <td><%= visit.findings %></td>
     <td><%= visit.diagnosis %></td>

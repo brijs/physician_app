@@ -4,11 +4,11 @@ PhysicianApp::Application.routes.draw do
 
   resources :visits
 
-  # resources :patients
-  
   resources :patients do
+    get :search_ref, :on => :collection
     resources :visits
   end
+
 
   resources :physicians
 

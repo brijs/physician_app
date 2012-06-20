@@ -1,12 +1,11 @@
 <tr>
     <td>
-        <%= link_to patient do %>
-            <%= gravatar_for(patient, size: 20) %>
-        <% end %>
+        <a href="<%= patient_path(patient) %>">
+        <%= gravatar_for patient, size:20 %>
+        <%=  display_name_for patient %>
+        </a>
     </td>
-    <td><%= patient.first_name %></td>
-    <td><%= patient.last_name %></td>
-    <td><%= patient.email %></td>
+    <td><%= patient.reference_number %></td>
     <td><%= distance_of_time_in_words_to_now(patient.dob) %></td>
     <td><%= patient.mobile %></td>
     <td><%= patient.sex %></td>

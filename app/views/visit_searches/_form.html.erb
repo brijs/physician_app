@@ -3,7 +3,9 @@
   <%= f.error_notification %>
 
   <div class="form-inputs from-horizontal">
+    <% if false %>
     <%= f.input :reference_number, :placeholder => "Enter exact reference number" %>
+    <% end %>
     <%= f.input :from_date, :input_html => {:class => "span1"}, 
       :include_blank => true %>
     <%= f.input :to_date,  :input_html => {:class => "span1"},

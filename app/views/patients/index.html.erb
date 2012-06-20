@@ -11,18 +11,18 @@
     <h2 >My Patients (<%= current_physician.patients.count %>)</h3>
     <br>
     <div>
+        <% if false %>
     <form class="form-horizontal" action=<%= patients_path %>>
       <input type="text" class="search-query span2" placeholder="Filter by name" id="search" name = "search">
     </form> 
+    <% end %>
    </div>
     <%= will_paginate @patients %>
     <table class="table table-striped">
         <thead>
           <tr>
-            <th></th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Email</th>
+            <th>Patient name</th>
+            <th>Ref No</th>
             <th>Age</th>
             <th>Mobile</th>
             <th>Sex</th>
@@ -39,7 +39,7 @@
 
 <% end %>
 
- <%= link_to new_patient_path, :class => 'btn btn-primary' do %>
+<%= link_to new_patient_path, :class => 'btn btn-primary' do %>
 <i class = "icon-plus icon-white"></i> New Patient
 <% end %>
 

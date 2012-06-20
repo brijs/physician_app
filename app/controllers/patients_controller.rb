@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
   before_filter :signed_in_physician
-  before_filter :correct_physician,   except: [:new, :create, :index]
+  before_filter :correct_physician,   except: [:search_ref, :new, :create, :index]
 
   # GET /patients
   # GET /patients.json
@@ -13,12 +13,26 @@ class PatientsController < ApplicationController
     end
   end
 
+  def search_ref
+      # local array
+      patients = Patient.where('physician_id = ? AND reference_number = ?', 
+          current_physician, params[:reference_number]).limit(1)
+      if (patients.empty?)
+        redirect_to patients_url, 
+            alert: 'Reference ID ' + params[:reference_number] + ' not found'
+      else
+        @patient = patients[0]
+        @visits = @patient.visits.paginate(per_page: 10, page: params[:page])
+      end
+     #defaults to render 'search_ref'
+  end
+
   # GET /patients/1
   # GET /patients/1.json
   def show
     @patient = Patient.find(params[:id])
     @visits = @patient.visits.paginate(per_page: 10, page: params[:page])
-    @visit = @patient.visits.build
+    #@visit = @patient.visits.build
     
     respond_to do |format|
       format.html # show.html.erb

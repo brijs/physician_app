@@ -1,5 +1,5 @@
 class VisitSearch < ActiveRecord::Base
-	attr_accessible  :keywords, :from_date, :reference_number, :to_date
+	attr_accessible  :keywords, :from_date, :to_date
 
 	def visits (physician, page=1)
 		 Visit.for_physician(physician)
@@ -8,15 +8,16 @@ class VisitSearch < ActiveRecord::Base
 						 conditions: conditions);
 	end
 
+
 	private
-
-
 	def keyword_conditions
-		["(visits.complaints LIKE ? OR visits.findings LIKE ?
-		 OR visits.treatment LIKE ? OR visits.notes LIKE ? 
-		 OR visits.diagnosis LIKE ?)", 
-		 "%#{keywords}%","%#{keywords}%","%#{keywords}%","%#{keywords}%",
-		 "%#{keywords}%"] unless keywords.blank?
+		keywords2 = keywords.downcase unless keywords.nil?
+
+		["(lower(visits.complaints) LIKE ? OR lower(visits.findings) LIKE ?
+		 OR lower(visits.treatment) LIKE ? OR lower(visits.notes) LIKE ? 
+		 OR lower(visits.diagnosis) LIKE ?)", 
+		 "%#{keywords2}%","%#{keywords2}%","%#{keywords2}%","%#{keywords2}%",
+		 "%#{keywords2}%"] unless keywords2.blank?
 	end
 
 	def from_date_conditions
@@ -25,10 +26,6 @@ class VisitSearch < ActiveRecord::Base
 
 	def to_date_conditions
 		["visits.date_of_visit <= ?", to_date] unless to_date.blank?
-	end
-
-	def reference_number_conditions
-		["visits.reference_number = ?", reference_number] unless reference_number.blank?
 	end
 
 	def conditions

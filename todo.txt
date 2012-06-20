@@ -1,9 +1,24 @@
--search paging bug
+done:
 -case search bug
+-email is optional
+-reference number for patient; unique; editable
+
+
+low:
 -routes.rb cleanup
 -update pwd relogin bug
 -remove back/edit links
--sort by desc date
+
+todo:
+-search paging bug
 -last visited date on patient profile
 -num patients/visits in last 30 days on phy profile
 -indian style date of visit display
+-datepicker
+-print with letter head
+-quick search last-visit, and update
+
+p1:
+-quick-add
+-sort by desc date
+-autosave autocomplete diagnosis/treatment

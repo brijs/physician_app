@@ -4,16 +4,22 @@
 
 <br>
 <br>
-<h1><%= display_name_for @patient %></h1>
+<h1><%= display_name_for @patient%> </h1>
+<h4>Ref No. <strong><%= @patient.reference_number %></strong></h4>
+
 <span class="timestamp">
 	last updated <%= time_ago_in_words(@patient.updated_at) %> ago.
 </span>
 
 <br>
 <span>
-	<%= link_to  "#" do %>
+	<%= link_to  patient_path @patient do %>
 		<%= pluralize(@patient.visits.count, "visit") %>
 	<% end %>
+	<%= link_to new_patient_visit_path(@patient), :class => 'btn btn-primary btn-mini' do %>
+	<i class = "icon-plus icon-white"></i> New Visit
+	<% end %>
+	
 </span>
 <span class="timestamp">
 	<% if @patient.visits.count > 0 %>
@@ -21,17 +27,20 @@
 	<% end %>
 </span>
 
+
+
 <br>
 <span class="content"><strong>Date of Birth:</strong>
 	<address> <%= @patient.dob.to_s(:long) %></address>
 </span>
-<br>
 <span class="content"><strong>Phone:</strong>  
 	<address><%= @patient.mobile %></address>
 </span>
+<% if @patient.email.present? %>
 <span class="content"><strong>Email:</strong>  
 	<address><%= @patient.email %></address>
 </span>
+<% end %>
 
 <span>
 	<%= link_to edit_patient_url(@patient), :class => "btn btn-mini btn-info"  do %>
