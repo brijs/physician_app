@@ -27,3 +27,6 @@ p1:
   - designations(left/right)
   - clinic, hospital (title + address/timings)
   - (footer): title, text
+  - add patient name
+
+-correct_phy filter in visits

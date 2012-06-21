@@ -11,17 +11,18 @@
     <td><%= visit.diagnosis %></td>
     <td><%= visit.treatment %></td>
     <td><%= visit.notes %></td>
-    <% if false %>
-    <td><%= link_to 'Show', patient_visit_path(visit.patient, visit), 
-      :class => 'btn btn-mini btn-info' %>
+    <td>
+        <%= link_to patient_visit_path(visit.patient, visit, :format => "pdf"), 
+          :class => 'btn btn-mini btn-info' do %>
+          <i class="icon-print"></i>
+        <% end %>
     </td>
-    <% end %>
     <td><%= link_to edit_patient_visit_path(visit.patient, visit),
         :class => 'btn btn-mini', :html => {:alt => 'Edit'} do%>
             <i class="icon-edit"></i> 
     <% end %>
     </td>
-    <td><%= link_to visit, confirm: 'Are you sure?', method: :delete, :class => 'btn btn-mini btn-danger' do %>
+    <td><%= link_to patient_visit_path(visit.patient, visit), confirm: 'Are you sure?', method: :delete, :class => 'btn btn-mini btn-danger' do %>
         <i class="icon-trash icon-white"></i> 
     <% end %>
   </td>

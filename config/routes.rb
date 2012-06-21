@@ -2,13 +2,12 @@ PhysicianApp::Application.routes.draw do
 
   resources :visit_searches, only: [:index, :create]
 
-  resources :visits
+  resources :visits, only: [:index]
 
   resources :patients do
     get :search_ref, :on => :collection
     resources :visits
   end
-
 
   resources :physicians
 

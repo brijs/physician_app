@@ -17,7 +17,7 @@ module PatientsHelper
 
 
   def display_name_for(user)
-  	user.first_name + ' ' + user.last_name
+    user.first_name.capitalize + ' ' + user.last_name.capitalize
   end
 
 end
